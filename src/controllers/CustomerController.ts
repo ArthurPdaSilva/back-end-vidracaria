@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import Customer from '../schemas/Customer'
+import CustomerInterface from '../types/CustomerInterface'
 
 class CustomerController {
   public async read (req: Request, res: Response): Promise<Response> {
@@ -13,11 +14,12 @@ class CustomerController {
   }
 
   public async update (req: Request, res: Response): Promise<Response> {
-    const { email, phone } = req.body
-    const customerForEdit = await Customer.findById(req.params.id)
+    const { email, phone, localization } = req.body
+    const customerForEdit = await Customer.findById(req.params.id) as CustomerInterface
     customerForEdit.email = email
     customerForEdit.phone = phone
-    const customerUpdated = await Customer.updateOne({ _id: req.params.id }, customerForEdit)
+    customerForEdit.localization = localization
+    const customerUpdated = await Customer.findOneAndUpdate({ _id: req.params.id }, customerForEdit)
     return res.json(customerUpdated)
   }
 

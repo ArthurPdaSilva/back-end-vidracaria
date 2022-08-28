@@ -1,14 +1,5 @@
-import { Schema, model, Document } from 'mongoose'
-
-interface CustomerInterface extends Document {
-    email: string,
-    name: string,
-    cpf: number,
-    localization: string,
-    phone: number,
-    yearOfBirth: number,
-    howOldAreYou(): string
-}
+import { Schema, model } from 'mongoose'
+import CustomerInterface from '../types/CustomerInterface'
 
 const CustomerSchema = new Schema({
   email: String,

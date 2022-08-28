@@ -1,18 +1,12 @@
-import { Schema, model, Document } from 'mongoose'
-
-interface EmployeeInterface extends Document {
-    name: string,
-    job_position: string,
-    daily: number,
-    email: string,
-    cpf: number
-}
+import { Schema, model } from 'mongoose'
+import EmployeeInterface from '../types/EmployeeInterface'
 
 const EmployeeSchema = new Schema({
   name: String,
-  job_position: String,
+  jobPosition: String,
   daily: Number,
   email: String,
+  phone: Number,
   cpf: Number
 }, {
   // Basicamente, guarda a criação de cada campo

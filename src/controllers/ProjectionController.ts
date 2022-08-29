@@ -9,10 +9,10 @@ class ProjectionController {
   }
 
   async create (req: Request, res: Response): Promise<Response> {
-    const { employeeId } = req.headers
-    if (employeeId === null) return res.json('Criação negada!')
-    const Projections = await Projection.create({ employee: employeeId, ...req.body })
-    return res.json(Projections)
+    const projectionEdit = req.body
+    projectionEdit.employee = req.headers.employeeid
+    const projection = await Projection.create(projectionEdit)
+    return res.json(projection)
   }
 
   public async update (req: Request, res: Response): Promise<Response> {

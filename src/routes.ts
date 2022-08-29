@@ -17,5 +17,6 @@ routes.delete('/employee/:id', EmployeeController.delete)
 
 routes.get('/projections', ProjectionController.read)
 routes.post('/projection/', ProjectionController.create)
+routes.delete('/projection/:id', ProjectionController.delete)
 
 export default routes

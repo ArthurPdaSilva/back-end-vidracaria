@@ -3,8 +3,9 @@ import CustomerInterface from '../types/CustomerInterface'
 
 const CustomerSchema = new Schema({
   email: String,
-  name: String,
   cpf: Number,
+  rg: Number,
+  name: String,
   localization: String,
   phone: Number,
   yearOfBirth: Number
